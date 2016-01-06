@@ -51,8 +51,8 @@ object ScanDataImporter {
         successCounter += 1
       } catch {
         case e: Exception =>
-          println(s"$rowKey $family:$columnName $timestamp: " + value.getOrElse("no value"))
-          println("Error! " + e.getMessage)
+          logger.warn(s"Error inserting $rowKey $family:$columnName $timestamp: " + value.getOrElse("no value"))
+          logger.error("Error! " + e.getMessage)
 
       }
     }
